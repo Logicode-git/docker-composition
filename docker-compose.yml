@@ -6,7 +6,7 @@ services:
       - 27017:27017    
     
     volumes:
-      - mongodb_data:/data/db
+      - mongo-volume:/data/db
   
   web:
     build: ./flask
@@ -16,4 +16,5 @@ services:
       - db
 
 volumes:
-  mongodb_data:
+  mongo-volume:
+    external: true  # if volume with this name exists,  it will not create a new one with "folder" prefix.
